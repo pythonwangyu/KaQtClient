@@ -23,6 +23,7 @@ LoginWindows::~LoginWindows()
 
 void LoginWindows::ReadIPInfromationFromUi()
 {
+    //set Login Server and Port to Private Member
     m_IP = ui->IPLineEdit->text();
     m_port = ui->PortLineEdit->text().toInt();
     qDebug() << m_IP << m_port << endl;

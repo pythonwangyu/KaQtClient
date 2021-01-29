@@ -8,11 +8,25 @@
 //for Net Work
 #include <QTcpSocket>
 #include <QHostAddress>
+#include <string>
 
 
 namespace Ui {
 class LoginWindows;
 }
+
+
+//Get Results of LoginServer send back to Client;
+
+typedef struct LoginMessage{
+    std::string ip;
+    std::string port;
+    uint32_t    Ack_num;
+}ResLoginMessage;
+
+
+
+
 
 class LoginWindows : public QWidget
 {
@@ -31,8 +45,13 @@ public:
 
 
 
-    //向发送LoginServer发送登录信息
+    //Send Login Information to LoginSever,     send username,passwd,Will
     bool  SendToLoginServer();
+
+    //Get Results of Login
+
+
+
 
 
 
@@ -43,8 +62,8 @@ public:
 
 
 public slots:
-   // void slotConnected();               //连接上socket的函数
-    //void slotDisconnected();            //断开socket的函数
+   // void slotConnected();               //slot function when socket connected  signal
+    //void slotDisconnected();            //slot function when socket disconnected signal
 
 
 private slots:
@@ -59,15 +78,17 @@ private slots:
     void on_ChooseServerButton_clicked();       //点击触发选择服务器的槽函数
 
 private:
-    Ui::LoginWindows *ui;
-    MainWindow       *ChatWindow;
+    Ui::LoginWindows *ui;                       // loginUi          this is a LoginUi for User,can choose LoginServer
+    MainWindow       *ChatWindow;               //Chatwindow
 
-    int              m_port;
-    QString          m_IP;
-    QHostAddress     *serverIP;
-    QTcpSocket       *tcpSocket;
-    bool             m_Status;                  //状态
+    int              m_port;                    //store，loginServer Port,  MsgServerPort
+    QString          m_IP;                      //store，loginServer Port,  MsgServerPort
+    QHostAddress     *serverIP;                 //for Connection to loginServer or MsgServer
+    QTcpSocket       *tcpSocket;                //for Connection to loginServer or MsgServer
+    bool             m_Status;                  //Connection Status  true ,false
 
+
+    ResLoginMessage  Res;
 };
 
 

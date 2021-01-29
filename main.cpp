@@ -4,23 +4,7 @@
 
 #include <QPushButton>
 
-//class MyWindows: public QWidget
-//{
-//public:
-//    explicit MyWindows()
-//    {
-//        Btn = new QPushButton(this);
-//        Btn->show();
-//    }
 
-//    ~MyWindows()
-//    {
-//        delete Btn;
-//    }
-
-//private:
-//    QPushButton  *Btn;
-//};
 
 
 
